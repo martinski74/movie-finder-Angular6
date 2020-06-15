@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Movie Finder</a>
+</nav>
+<div class="jumbotron">
+ <div class="container">
+  <h1>Find a movie</h1>
+  <p>Search for a movie:</p>
+  <form #form="ngForm" (submit)="search(form.value)">
+    <input type="text" class="form-control" name="search" ngModel>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+ </div> 
+</div>
+<div class="panel panel-default" *ngIf="isSearch">
+  <div class="panel-heading"><h3 class="panel-title">Results</h3></div>
+  <div class="panel-body">
+    <div class="row">
+      <div *ngFor="let movie of searchedResult.results; let i = index" class="col-md-2">
+        <app-movie *ngIf="i < 6" [movie]="movie">
+
+        </app-movie>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Popular Movies</h3></div>
+  <div class="panel-body">
+    <div *ngIf='popular' class="row">
+      <div *ngFor="let movie of popular.results; let i = index" class="col-md-2">
+        <app-movie *ngIf="i < 6" [movie]="movie">
+
+        </app-movie>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">In Theaters</h3></div>
+  <div class="panel-body">
+    <div *ngIf='theaters' class="row">
+      <div
+        *ngFor="let movie of theaters.results; let i = index"
+        class="col-md-2">
+        <app-movie *ngIf="i < 6" [movie]="movie">
+
+        </app-movie>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Kids</h3></div>
+  <div class="panel-body">
+    <div *ngIf='kids' class="row">
+      <div
+        *ngFor="let movie of kids; let i = index"
+        class="col-md-2">
+        <app-movie *ngIf="i < 6" [movie]="movie">
+
+        </app-movie>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Drama</h3></div>
+  <div class="panel-body">
+    <div *ngIf='drama' class="row">
+      <div
+        *ngFor="let movie of drama; let i = index"
+        class="col-md-2">
+        <app-movie *ngIf="i < 6" [movie]="movie">
+
+        </app-movie>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-copyright text-center">
+  <a class="footer" href="#">Popular Movies</a>
+</div>
